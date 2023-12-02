@@ -27,9 +27,15 @@ function App() {
       };
     });
   };
+  const submitHandler = (event) => {
+    event.preventDefault();
+    console.log("This is the final form-data");
+    console.log(formData);
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={submitHandler}>
         <input
           type="text"
           placeholder="First-Name"
@@ -98,6 +104,7 @@ function App() {
             <option value="Nagaland">Nagaland</option>
           </select>
         </fieldset>
+        <button value="Sumbit">Sumbit</button>
       </form>
     </div>
   );
