@@ -88,6 +88,16 @@ function App() {
           />
           <label htmlFor="Chemistry">Chemistry</label>
         </fieldset>
+        <fieldset>
+          <legend>Chooose Your State</legend>
+          <select value={formData.state} name="state" onChange={changeHandler}>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Assam">Assam</option>
+            <option value="Nagaland">Nagaland</option>
+          </select>
+        </fieldset>
       </form>
     </div>
   );
