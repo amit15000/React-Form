@@ -15,7 +15,7 @@ function App() {
     offers: "",
     notification: "",
   });
-  console.log(formData);
+
   function changeHandler(event) {
     const { name, value, type, checked } = event.target;
     setFormData((prevD) => {
@@ -24,11 +24,17 @@ function App() {
         [name]: type === "checkbox" ? checked : value,
       };
     });
-    console.log(formData);
   }
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log("Final Data");
+    console.log(formData);
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={submitHandler}>
         <label htmlFor="firstName">First Name</label>
         <br />
         <input
@@ -136,14 +142,14 @@ function App() {
         <br />
         <fieldset>
           <legend>By Email</legend>
-
           <input
             type="checkbox"
             id="comments"
             name="comments"
             onChange={changeHandler}
           ></input>
-          <label htmlFor="Candidates">Comments</label>
+          <label htmlFor="Candidates">Comments</label> <br />
+          <span>Get notified when someone posts a comment on a post</span>
           <br />
           <input
             type="checkbox"
@@ -153,13 +159,16 @@ function App() {
           ></input>
           <label htmlFor="comments">Candidates</label>
           <br />
+          <span>Get notified when a candidate applies for a job</span>
+          <br />
           <input
             type="checkbox"
             id="Offers"
             name="offers"
             onChange={changeHandler}
           ></input>
-          <label htmlFor="Offers">Offers</label>
+          <label htmlFor="Offers">Offers</label> <br />
+          <span>Get notified when a candidate accepts or rejects an offer</span>
           <br />
         </fieldset>
 
@@ -197,6 +206,7 @@ function App() {
           />
           <label id="No Push Notification">No Push Notification</label>
         </fieldset>
+        <button>Submit</button>
       </form>
     </div>
   );
