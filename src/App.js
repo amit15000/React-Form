@@ -13,14 +13,15 @@ function App() {
     comments: "",
     candidates: "",
     offers: "",
+    notification: "",
   });
   console.log(formData);
   function changeHandler(event) {
-    const { name, value } = event.target;
+    const { name, value, type, checked } = event.target;
     setFormData((prevD) => {
       return {
         ...prevD,
-        [name]: value,
+        [name]: type === "checkbox" ? checked : value,
       };
     });
     console.log(formData);
@@ -63,7 +64,7 @@ function App() {
         <br />
         <label htmlFor="country">Country</label>
         <br />
-        <select name="country" onChange={changeHandler}>
+        <select name="country" id="country" onChange={changeHandler}>
           <option name="" value="">
             Select
           </option>
@@ -100,15 +101,102 @@ function App() {
           <option value="Maharastra">Maharastra</option>
         </select>
         <br />
-        <label htmlFor="ZIP">ZIP/Provice</label>
+        <label htmlFor="Street">Street Address</label>
+        <br />
+        <input
+          type="text"
+          placeholder="1234 Main St"
+          id="Street"
+          name="StreetAddress"
+          value={formData.StreetAddress}
+          onChange={changeHandler}
+        ></input>
+        <br />
+        <label htmlFor="City">City</label>
+        <br />
+        <input
+          type="text"
+          placeholder="Asansol"
+          id="City"
+          name="City"
+          value={formData.City}
+          onChange={changeHandler}
+        ></input>
+        <br />
+        <label htmlFor="Zip">ZIP/Provice</label>
+        <br />
         <input
           type="number"
+          id="Zip"
           placeholder="713301"
           name="Zip"
           value={formData.Zip}
           onChange={changeHandler}
         />
         <br />
+        <fieldset>
+          <legend>By Email</legend>
+
+          <input
+            type="checkbox"
+            id="comments"
+            name="comments"
+            onChange={changeHandler}
+          ></input>
+          <label htmlFor="Candidates">Comments</label>
+          <br />
+          <input
+            type="checkbox"
+            id="Candidates"
+            name="candidates"
+            onChange={changeHandler}
+          ></input>
+          <label htmlFor="comments">Candidates</label>
+          <br />
+          <input
+            type="checkbox"
+            id="Offers"
+            name="offers"
+            onChange={changeHandler}
+          ></input>
+          <label htmlFor="Offers">Offers</label>
+          <br />
+        </fieldset>
+
+        <fieldset>
+          <legend>Push Notifications</legend>
+          <span>These are delivered via SMS to your mobile</span>
+          <br />
+          <input
+            type="radio"
+            name="notification"
+            checked={formData.notification === "Everything"}
+            value="Everything"
+            id="Everthing"
+            onChange={changeHandler}
+          />
+          <label id="Everything">Everthing</label>
+          <br />
+          <input
+            type="radio"
+            name="notification"
+            checked={formData.notification === "Same as Email"}
+            value="Same as Email"
+            id="Same as Email"
+            onChange={changeHandler}
+          />
+          <label id="Same as Email">Same as Email</label>
+          <br />
+          <input
+            type="radio"
+            name="notification"
+            checked={formData.notification === "No Push Notification"}
+            value="No Push Notification"
+            id="No Push Notification"
+            onChange={changeHandler}
+          />
+          <label id="No Push Notification">No Push Notification</label>
+        </fieldset>
       </form>
     </div>
   );

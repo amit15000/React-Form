@@ -80,12 +80,20 @@ function App() {
           <input
             type="radio"
             name="subject"
+            id="Physics"
+            value="Physics"
+            checked={formData.subject === "Physics"}
+            onChange={changeHandler}
+          />
+          <label htmlFor="Chemistry">Chemistry</label>
+          <input
+            type="radio"
+            name="subject"
             id="Chemistry"
             value="Chemistry"
             checked={formData.subject === "Chemistry"}
             onChange={changeHandler}
           />
-          <label htmlFor="Chemistry">Chemistry</label>
         </fieldset>
         <fieldset>
           <legend>Chooose Your State</legend>
